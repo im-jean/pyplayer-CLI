@@ -13,7 +13,7 @@ Este proyecto utiliza **[uv](https://astral.sh)** para la gestión rápida de de
 
 1. Clona el repositorio:
    ```bash
-   git clone https://github.com
+   git clone https://github.com/im-jean/pyplayer-CLI
    cd pyplayer-CLI
    ```
 
@@ -27,13 +27,14 @@ Este proyecto utiliza **[uv](https://astral.sh)** para la gestión rápida de de
    uv run pyplayer
    ```
 
-## 📄️ ¿Cómo modificar el programa?
-#1 Establecer la ruta de la musica.
-- Dentro de la primera variable(musica), tienes que modificar la ruta dentro de los parentesis (home/carpeta/carpeta) con la ruta donde tienes tus canciones en .mp3 .wav, etc. 
-<strong>Aviso: Las canciones deben estar sueltas y no metidas en carpetas, si no el programa no podrá leerlas</strong>
+## 📄 ¿Cómo configurar y modificar el programa?
 
-#2 Agregar tiempo de reproducción.
-- Si sabes lo que hace el programa por dentro, debes saber que no posee alguna función que te deje reproducir musica sin importar el tiempo, como este es una version cruda, es lo basico y deberás cambiar el tiempo de time.sleep(aca el tiempo de tu musica) y que no se corte de inmediato.
+### 1. Establecer la ruta de tu música
+Dentro del archivo `src/pyplayer/__init__.py`, busca la variable `musica` y reemplaza la ruta dentro de `os.listdir("/home/tu_usuario/Music/")` por la carpeta donde guardas tus canciones (`.mp3`, `.wav`, `.ogg`, etc.).
+> **Nota:** Por el momento, los archivos de audio deben estar directamente dentro de esa carpeta y no en subcarpetas.
+
+### 2. Ajustar el tiempo de reproducción
+Esta versión inicial aún no cuenta con un bucle continuo, por lo que utiliza una pausa temporal (`time.sleep(60)`) para mantener el audio sonando antes de cerrar el programa. Puedes modificar ese número en segundos según la duración de tus pistas para evitar que se corten antes de tiempo.
 
 ## 🛠️ Próximas mejoras (Roadmap)
 - [ ] Bucle continuo para cambiar de canción sin cerrar el programa.
