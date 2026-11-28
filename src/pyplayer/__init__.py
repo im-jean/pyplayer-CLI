@@ -2,27 +2,29 @@ import os
 import pygame
 import time
 
-def main() -> None:
-  #1 Buscar las canciones.
-  musica = os.listdir("/home/jean/Music/")
+musica = os.listdir("/home/jean/Music/")
+pygame.mixer.init()
 
-  #2 Mostrar la lista de canciones.
+def lista_canciones():
   for numero, canciones in enumerate(musica, start=1):
     print(f"[{numero}] - {canciones}")
 
-  #3 Iniciar el motor de audio
-  pygame.mixer.init()
 
-  #4 Pedir numero de la cancion al usuario
-  cancion_seleccionada = int(input("Cancion: ")) - 1
-
-  #4 Unir rutas
+def unir_pistas():
+  cancion_seleccionada = int(input("~# ")) - 1
   eleccion = os.path.join("/home/jean/Music/", musica[cancion_seleccionada])
+  return eleccion
 
-  #5 Cargar la musica
+def reproducir(eleccion):
   pygame.mixer.music.load(eleccion)
   pygame.mixer.music.play()
   time.sleep(60)
+
+
+def main() -> None:
+  lista_canciones()
+  eleccion = unir_pistas()
+  reproducir(eleccion)
 
 if __name__ == "__main__":
   main()
